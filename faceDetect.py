@@ -15,12 +15,12 @@ print(f'No. of faces : {len(faces)}')
 for (x, y, w, h) in faces:
     cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), thickness=2)
     
-    roi_gray = gray[y:y + h, x:x + w]
-    roi_color = img[y:y + h, x:x + w]
-    eyes = eyeDetect.detectMultiScale(roi_gray)
+    grayROI = gray[y:y + h, x:x + w]
+    colorROI = img[y:y + h, x:x + w]
+    eyes = eyeDetect.detectMultiScale(grayROI)
 
     for (ex, ey, ew, eh) in eyes:
-        cv.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+        cv.rectangle(colorROI, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
 
 print(f'No. of eyes : {len(eyes)}')
 cv.imshow('Detected Face', img)
